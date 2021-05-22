@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Đăng Nhập";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Đăng Nhập</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <p style="color:red;text-align:center;font-weight:bold;padding-bottom:20px">
+                @ViewBag.ThongBao
+            </p>
+            <form action="/User/DangNhap" method="post">
+                <table align="center">
+                    <tr >
+                        <td height="40px" style="padding-bottom:20px">
+                            <p style="font-weight:bold">
+                                Email Đăng Nhập:
+                            </p>
+                        </td>
+                        <td  style="padding-bottom:20px">
+                        </td>
+                        <td height="40px" style="padding-bottom:20px">
+                            <input type="text" name="TenDN" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="40px" style="padding-bottom:20px">
+                            <p style="font-weight:bold">
+                                Mật Khẩu:
+                            </p>
+                        </td>
+                        <td  style="padding-bottom:20px"></td>
+                        <td height="40px" style="padding-bottom:20px">
+                            <input type="password" name="MatKhau" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <input type="submit" value="Đăng Nhập" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

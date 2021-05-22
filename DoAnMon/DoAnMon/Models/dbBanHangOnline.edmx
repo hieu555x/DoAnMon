@@ -58,6 +58,7 @@
           <Property Name="ghiChu" Type="ntext" />
           <Property Name="maQH" Type="int" />
           <Property Name="diemTichLuy" Type="int" />
+          <Property Name="matKhau" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="loaiSP">
           <Key>
@@ -75,13 +76,6 @@
           <Property Name="tenNhom" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="ghiChu" Type="ntext" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SalesOnline.dbo.PhanHoi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PhanHoi">
-          <Property Name="tenkh" Type="nvarchar(max)" />
-          <Property Name="email" Type="varchar(max)" />
-          <Property Name="noidung" Type="nvarchar(max)" />
-        </EntityType>-->
         <EntityType Name="quanHuyen">
           <Key>
             <PropertyRef Name="maQH" />
@@ -137,11 +131,6 @@ warning 6013: The table/view 'SalesOnline.dbo.PhanHoi' does not have a primary k
           <Property Name="maNhom" Type="int" />
           <Property Name="maQH" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'SalesOnline.dbo.random' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="random">
-          <Property Name="rndResult" Type="float" />
-        </EntityType>-->
         <Association Name="FK__baiViet__maLoai__5535A963">
           <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="0..1" />
           <End Role="baiViet" Type="Self.baiViet" Multiplicity="*" />
@@ -504,6 +493,7 @@ warning 6013: The table/view 'SalesOnline.dbo.random' does not have a primary ke
           <Property Name="diemTichLuy" Type="Int32" />
           <NavigationProperty Name="donHangs" Relationship="Self.FK__donHang__maKH__398D8EEE" FromRole="khachHang" ToRole="donHang" />
           <NavigationProperty Name="quanHuyen" Relationship="Self.FK__khachHang__maQH__4F7CD00D" FromRole="khachHang" ToRole="quanHuyen" />
+          <Property Name="matKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="loaiSP">
           <Key>
@@ -940,6 +930,7 @@ warning 6013: The table/view 'SalesOnline.dbo.random' does not have a primary ke
           <EntitySetMapping Name="khachHangs">
             <EntityTypeMapping TypeName="SalesOnlineModel.khachHang">
               <MappingFragment StoreEntitySet="khachHang">
+                <ScalarProperty Name="matKhau" ColumnName="matKhau" />
                 <ScalarProperty Name="maKH" ColumnName="maKH" />
                 <ScalarProperty Name="tenKH" ColumnName="tenKH" />
                 <ScalarProperty Name="soDT" ColumnName="soDT" />

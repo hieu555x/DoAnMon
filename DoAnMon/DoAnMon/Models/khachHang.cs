@@ -30,6 +30,7 @@ namespace DoAnMon.Models
         public string ghiChu { get; set; }
         public Nullable<int> maQH { get; set; }
         public Nullable<int> diemTichLuy { get; set; }
+        public string matKhau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<donHang> donHangs { get; set; }

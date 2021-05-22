@@ -45,6 +45,7 @@
     <EntitySetMapping Name="khachHangs">
       <EntityTypeMapping TypeName="SalesOnlineModel.khachHang">
         <MappingFragment StoreEntitySet="khachHang">
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
           <ScalarProperty Name="maKH" ColumnName="maKH" />
           <ScalarProperty Name="tenKH" ColumnName="tenKH" />
           <ScalarProperty Name="soDT" ColumnName="soDT" />

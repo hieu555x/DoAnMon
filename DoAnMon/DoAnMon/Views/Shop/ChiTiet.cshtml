@@ -87,10 +87,10 @@
                                         <div role="tabpanel" class="tab-pane fade" id="profile">
                                             <h2>Nhận Xét</h2>
                                             <div class="submit-review">
-                                                <p><label for="name">Name</label> <input name="name" type="text"></p>
+                                                <p><label for="name">Tên</label> <input name="name" type="text"></p>
                                                 <p><label for="email">Email</label> <input name="email" type="email"></p>
-                                                <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-                                                <p><input type="submit" value="Submit"></p>
+                                                <p><label for="review">Nhận xét của bạn</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
+                                                <p><input type="submit" value="Gửi"></p>
                                             </div>
                                         </div>
                                     </div>
@@ -102,23 +102,27 @@
 
 
                     <div class="related-products-wrapper">
-                        <h2 class="related-products-title">Related Products</h2>
+                        <h2 class="related-products-title">Sản phẩm mới nhất</h2>
                         <div class="related-products-carousel">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="img/product-1.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                            @foreach (var item in data.sanPhams.OrderByDescending(a => a.ngayDang).Take(6))
+                            {
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src=@Url.Content("~/Content"+item.hinhDD) alt="">
+                                        <div class="product-hover">
+                                            <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</a>
+                                            <a href="@Url.Action("ChiTiet","Shop",new { id = item.maSP })" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="">@item.tenSP</a></h2>
+
+                                    <div class="product-carousel-price">
+                                        <ins>@String.Format("{0:0,0}", item.giaBan) VNĐ</ins> <del></del>
                                     </div>
                                 </div>
-
-                                <h2><a href="">Sony Smart TV - 2015</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
-                                </div>
-                            </div>
+                            }
+                            
                             <div class="single-product">
                                 <div class="product-f-image">
                                     <img src="img/product-2.jpg" alt="">

@@ -62,6 +62,7 @@
     <Property Name="diemTichLuy" Type="Int32" />
     <NavigationProperty Name="donHangs" Relationship="Self.FK__donHang__maKH__398D8EEE" FromRole="khachHang" ToRole="donHang" />
     <NavigationProperty Name="quanHuyen" Relationship="Self.FK__khachHang__maQH__4F7CD00D" FromRole="khachHang" ToRole="quanHuyen" />
+    <Property Name="matKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="loaiSP">
     <Key>
