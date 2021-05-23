@@ -33,6 +33,5 @@ namespace DoAnMon.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ctDonHang> ctDonHangs { get; set; }
         public virtual khachHang khachHang { get; set; }
-        public virtual taiKhoanTV taiKhoanTV { get; set; }
     }
 }

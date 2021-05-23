@@ -1,0 +1,80 @@
+﻿@using DoAnMon.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Thông Tin Giỏ Hàng</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <table align="center" border="1">
+                <tr style="text-align:center;font-weight:bold">
+                    <td>Mã Sản Phẩm</td>
+                    <td>Tên Sản Phẩm</td>
+                    <td>Ảnh Sản Phẩm</td>
+                    <td>Số Lượng</td>
+                    <td>Đơn Giá</td>
+                    <td>Thành Tiền</td>
+                    <td width="50px"></td>
+                    <td width="50px"></td>
+                    <td width="50px"></td>
+                    <td width="50px"></td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr style="text-align:center;font-weight:bold">
+                        <td>@item.maSP_cart</td>
+                        <td>@item.tenSP_cart</td>
+                        <td>
+                            <img src=@Url.Content("~/Content"+item.hinhAnh_cart) width="20%" />
+                        </td>
+                        @using (Html.BeginForm("CapNhat", "GioHang", new { id = item.maSP_cart }))
+                        {
+                            <td>
+                                <input type="number" min="1" name="txtSoLuong" value="@item.soLuong_cart" />
+                            </td>
+                            <td>@item.soLuong_cart</td>
+                            <td>@String.Format("{0:0,0}", item.donGia_cart)</td>
+                            <td>@String.Format("{0:0,0}", item.thanhTien_cart)</td>
+                            <td>
+                                <a href=@Url.Action("ChiTiet", "Shop", new { id = @item.maSP_cart })>Chi Tiết</a>
+                            </td>
+                            <td>
+                                <a href=@Url.Action("XoaSanPham", "GioHang", new { id = item.maSP_cart })>Xóa</a>
+                            </td>
+                            <td>
+                                <input type="submit" value="Cập Nhật" />
+                            </td>
+                        }
+                    </tr>
+                }
+                <tr style="text-align:center;font-weight:bold">
+                    <td colspan="4">Số Lượng Sản Phẩm:@ViewBag.TongSoLuong</td>
+                    <td colspan="6">Tổng Số Tiền:@String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+                </tr>
+                <tr style="text-align:center;font-weight:bold">
+                    <td colspan="10">
+                        @Html.ActionLink("Xóa Giỏ Hàng", "XoaTatCa")
+                    </td>
+                </tr>
+                <tr style="text-align:center;font-weight:bold">
+                    <td colspan="10">
+                        @Html.ActionLink("Đặt Hàng", "DatHang")
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

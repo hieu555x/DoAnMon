@@ -20,7 +20,6 @@
         <AssociationConnector Association="SalesOnlineModel.FK__ctDonHang__maSP__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="SalesOnlineModel.FK__ctDonHang__soDH__3E52440B" ManuallyRouted="false" />
         <AssociationConnector Association="SalesOnlineModel.FK__donHang__maKH__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="SalesOnlineModel.FK__donHang__taiKhoa__3A81B327" ManuallyRouted="false" />
         <AssociationConnector Association="SalesOnlineModel.FK__khachHang__maQH__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="SalesOnlineModel.FK__sanPham__maLoai__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="SalesOnlineModel.FK__taiKhoanT__maNho__4BAC3F29" ManuallyRouted="false" />

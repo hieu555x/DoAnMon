@@ -191,18 +191,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__donHang__taiKhoa__3A81B327">
-          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
-          <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="taiKhoanTV">
-              <PropertyRef Name="taiKhoan" />
-            </Principal>
-            <Dependent Role="donHang">
-              <PropertyRef Name="taiKhoan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__khachHang__maQH__4F7CD00D">
           <End Role="quanHuyen" Type="Self.quanHuyen" Multiplicity="0..1" />
           <End Role="khachHang" Type="Self.khachHang" Multiplicity="*" />
@@ -402,10 +390,6 @@
             <End Role="khachHang" EntitySet="khachHang" />
             <End Role="donHang" EntitySet="donHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__donHang__taiKhoa__3A81B327" Association="Self.FK__donHang__taiKhoa__3A81B327">
-            <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
-            <End Role="donHang" EntitySet="donHang" />
-          </AssociationSet>
           <AssociationSet Name="FK__khachHang__maQH__4F7CD00D" Association="Self.FK__khachHang__maQH__4F7CD00D">
             <End Role="quanHuyen" EntitySet="quanHuyen" />
             <End Role="khachHang" EntitySet="khachHang" />
@@ -475,7 +459,6 @@
           <Property Name="trangThai" Type="Int32" />
           <NavigationProperty Name="ctDonHangs" Relationship="Self.FK__ctDonHang__soDH__3E52440B" FromRole="donHang" ToRole="ctDonHang" />
           <NavigationProperty Name="khachHang" Relationship="Self.FK__donHang__maKH__398D8EEE" FromRole="donHang" ToRole="khachHang" />
-          <NavigationProperty Name="taiKhoanTV" Relationship="Self.FK__donHang__taiKhoa__3A81B327" FromRole="donHang" ToRole="taiKhoanTV" />
         </EntityType>
         <EntityType Name="khachHang">
           <Key>
@@ -574,7 +557,6 @@
           <Property Name="maNhom" Type="Int32" />
           <Property Name="maQH" Type="Int32" />
           <NavigationProperty Name="baiViets" Relationship="Self.FK__baiViet__taiKhoa__2B3F6F97" FromRole="taiKhoanTV" ToRole="baiViet" />
-          <NavigationProperty Name="donHangs" Relationship="Self.FK__donHang__taiKhoa__3A81B327" FromRole="taiKhoanTV" ToRole="donHang" />
           <NavigationProperty Name="nhomTk" Relationship="Self.FK__taiKhoanT__maNho__4BAC3F29" FromRole="taiKhoanTV" ToRole="nhomTk" />
           <NavigationProperty Name="quanHuyen" Relationship="Self.FK__taiKhoanTV__maQH__4D94879B" FromRole="taiKhoanTV" ToRole="quanHuyen" />
           <NavigationProperty Name="sanPhams" Relationship="Self.FK__sanPham__taiKhoa__32E0915F" FromRole="taiKhoanTV" ToRole="sanPham" />
@@ -636,18 +618,6 @@
             </Principal>
             <Dependent Role="donHang">
               <PropertyRef Name="maKH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__donHang__taiKhoa__3A81B327">
-          <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
-          <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="taiKhoanTV">
-              <PropertyRef Name="taiKhoan" />
-            </Principal>
-            <Dependent Role="donHang">
-              <PropertyRef Name="taiKhoan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -740,10 +710,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__donHang__maKH__398D8EEE" Association="Self.FK__donHang__maKH__398D8EEE">
             <End Role="khachHang" EntitySet="khachHangs" />
-            <End Role="donHang" EntitySet="donHangs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__donHang__taiKhoa__3A81B327" Association="Self.FK__donHang__taiKhoa__3A81B327">
-            <End Role="taiKhoanTV" EntitySet="taiKhoanTVs" />
             <End Role="donHang" EntitySet="donHangs" />
           </AssociationSet>
           <AssociationSet Name="FK__khachHang__maQH__4F7CD00D" Association="Self.FK__khachHang__maQH__4F7CD00D">

@@ -99,7 +99,7 @@
                                 <div class="product-f-image">
                                     <img src=@Url.Content("~/Content/"+item.hinhDD) alt="">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
+                                        <a href=@Url.Action("ThemGioHang", "GioHang", new { maSP = item.maSP, strUrl = Request.Url.ToString() }) class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
                                         <a href=@Url.Action("ChiTiet","Shop",new { id = item.maSP }) class="view-details-link"><i class="fa fa-link"></i> Chi Tiết</a>
                                     </div>
                                 </div>

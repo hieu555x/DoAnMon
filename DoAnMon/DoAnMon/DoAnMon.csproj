@@ -205,6 +205,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -242,6 +244,7 @@
     <Compile Include="Models\donHang.cs">
       <DependentUpon>dbBanHangOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\khachHang.cs">
       <DependentUpon>dbBanHangOnline.tt</DependentUpon>
@@ -278,6 +281,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\assets\demo\chart-area-demo.js" />
+    <Content Include="Content\Admin\assets\demo\chart-bar-demo.js" />
+    <Content Include="Content\Admin\assets\demo\chart-pie-demo.js" />
+    <Content Include="Content\Admin\assets\demo\datatables-demo.js" />
+    <Content Include="Content\Admin\assets\img\error-404-monochrome.svg" />
+    <Content Include="Content\Admin\css\styles.css" />
+    <Content Include="Content\Admin\js\scripts.js" />
+    <Content Include="Content\Admin\Style.css" />
     <Content Include="Content\Asset\Images\404\404.png" />
     <Content Include="Content\Asset\Images\blog\blog-one.jpg" />
     <Content Include="Content\Asset\Images\blog\blog-three.jpg" />
@@ -480,6 +491,17 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shop\ChiTiet.cshtml" />
     <Content Include="Views\User\DangNhap.cshtml" />
+    <Content Include="Views\User\DangKy.cshtml" />
+    <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\XacNhanDonHang.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\SanPham.cshtml" />
+    <Content Include="Views\Admin\ThemSanPham.cshtml" />
+    <Content Include="Views\Admin\XoaSanPham.cshtml" />
+    <Content Include="Views\Admin\ChinhSua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

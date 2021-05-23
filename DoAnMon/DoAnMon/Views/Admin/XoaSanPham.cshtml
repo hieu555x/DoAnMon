@@ -1,0 +1,102 @@
+﻿@model DoAnMon.Models.sanPham
+
+@{
+    ViewBag.Title = "XoaSanPham";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using DoAnMon.Models
+@{ 
+    var data = new dbBanHangOnlineEntities();
+}
+<h1 class="mt-4">Sản Phẩm</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a href=@Url.Action("SanPham","Admin")>
+            Sản Phẩm
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        Xóa Sản Phẩm
+    </li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-question-circle"></i>
+        Bạn có muốn xóa sản phẩm này không ?
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="MaSP" class="control-label col-md-6" style="font-weight:bold">
+                        Mã Sản Phẩm:
+                    </label>
+                    <div class="col-md-12">
+                        <p>@Model.maSP</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="TenSP" class="control-label col-md-6" style="font-weight:bold">
+                        Tên Sản Phẩm:
+                    </label>
+                    <div class="col-md-12">
+                        <p>@Model.tenSP</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="GiaBan" class="control-label col-md-6" style="font-weight:bold">
+                        Giá Bán:
+                    </label>
+                    <div class="col-md-12">
+                        <p>@String.Format("{0:0,0}", Model.giaBan) VNĐ</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="MoTa" class="control-label col-md-6" style="font-weight:bold">
+                        Mô Tả:
+                    </label>
+                    <div class="col-md-12">
+                        <p>@Model.ndTomTat</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="AnhSP" class="control-label col-md-6" style="font-weight:bold">
+                        Ảnh Sản Phẩm
+                    </label>
+                    <div class="col-md-12">
+                        <img src="@Url.Content("~/Content/" + Model.hinhDD)" style="width:50%" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="NgayCapNhat" class="control-label col-md-6" style="font-weight:bold">
+                        Ngày Cập Nhật:
+                    </label>
+                    <div class="col-md-12">
+                        <p>@Model.ngayDang</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="MaLoai" class="control-label col-md-6" style="font-weight:bold">
+                        Tên Loại Hàng:
+                    </label>
+                    <div class="col-md-12">
+                        <p>
+                            @data.loaiSPs.SingleOrDefault(a => a.maLoai == Model.maLoai).loaiHang
+                        </p>
+                    </div>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-offset-2 col-md-2" style="margin:10px 20px">
+                        <input type="submit" value="Xác Nhận Xóa !" class="btn btn-danger btn-block text-uppercase mb-3" />
+                        <a href=@Url.Action("Index","Admin")>
+                            <input type="button" value="Trở Về Trang Chủ" class="btn btn-secondary" />
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

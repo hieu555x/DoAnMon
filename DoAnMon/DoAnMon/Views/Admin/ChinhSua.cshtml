@@ -1,0 +1,118 @@
+﻿@model DoAnMon.Models.sanPham
+@{
+    ViewBag.Title = "ChinhSua";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h1 class="mt-4">Sản Phẩm</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        <a href=@Url.Action("SanPham","Admin")>
+            Sản Phẩm
+        </a>
+    </li>
+    <li class="breadcrumb-item active">
+        <a href=@Url.Action("ThemSanPham","Admin")>
+            Sửa Sản Phẩm
+        </a>
+    </li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Chỉnh sửa thông tin của sản phẩm mới tại đây
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm("ChinhSua", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                <div class="form-horizontal">
+
+                    @*@Html.AntiForgeryToken()*@
+
+
+                    <hr />
+                    @*@Html.ValidationSummary(true)*@
+
+                    <div class="form-group">
+                        <label for="tenSP" class="control-label col-md-6">
+                            Tên Sản Phẩm
+                        </label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="tenSP" name="tenSP" type="text" required placeholder="@Model.tenSP" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="tenSP" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="giaBan" class="control-label col-md-6">
+                            Giá Bán
+                        </label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="giaBan" name="giaBan" type="number" required placeholder="@Model.giaBan" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="giaBan" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="giamGia" class="control-label col-md-6">
+                            Giảm Giá
+                        </label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="giamGia" name="giamGia" type="number" required placeholder="@Model.giamGia" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="giamGia" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ndTomTat" class="control-label col-md-6">
+                            Mô Tả
+                        </label>
+                        <div class="col-md-10">
+                            <textarea class="form-control validate" rows="3" required="" name="ndTomTat" placeholder="@Model.ndTomTat"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hinhDD" class="control-label col-md-6">
+                            Ảnh Sản Phẩm
+                        </label>
+                        <div class="col-md-10">
+                            <input id="hinhDD" name="fileupload" type="file" required />
+                            <img style="width:10%" src=@Url.Content("~/Content/"+Model.hinhDD) />
+                            <span style="color:red;font-weight:bold">(Ảnh hiện tại)</span>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="hinhDD" data-valmsg-replace="true"></span>
+                            <p style="color:red;font-weight:bold">@ViewBag.ThongBao</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ngayDang" class="control-label col-md-6">
+                            Ngày Đăng
+                        </label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" id="ngayDang" name="ngayDang" type="date" required placeholder="@Model.ngayDang" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ngayDang" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="maLoai" class="control-label col-md-6">
+                            Thể Loại
+                        </label>
+                        <div class="col-md-10">
+                            @Html.DropDownList("maLoai", (IEnumerable<SelectListItem>)ViewBag.maLoai, new { @class = "custom-select tm-select-accounts" })
+                            <span class="field-validation-valid text-danger" data-valmsg-for="maLoai" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Xác Nhận Sửa" class="btn btn-danger" />
+                            <a href=@Url.Action("Index","Admin")>
+                                <input type="button" value="Trở Về Trang Chủ" class="btn btn-secondary" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

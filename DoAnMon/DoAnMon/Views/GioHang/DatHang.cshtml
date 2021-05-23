@@ -1,0 +1,102 @@
+﻿@using DoAnMon.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "DatHang";
+}
+@{ 
+    var data = new dbBanHangOnlineEntities();
+}
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Thông Tin Thanh Toán</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <h2 style="text-align:center">THÔNG TIN HÀNG HÓA</h2>
+            <table align="center" border="1">
+                <tr style="text-align:center;font-weight:bold">
+                    <td>Mã Sản Phẩm</td>
+                    <td>Tên Sản Phẩm</td>
+                    <td>Ảnh Sản Phẩm</td>
+                    <td>Số Lượng</td>
+                    <td>Đơn Giá</td>
+                    <td>Thành Tiền</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr style="text-align:center;font-weight:bold">
+                        <td>@item.maSP_cart</td>
+                        <td>@item.tenSP_cart</td>
+                        <td>
+                            <img src=@Url.Content("~/Content"+item.hinhAnh_cart) width="20%" />
+                        </td>
+                        @using (Html.BeginForm("CapNhat", "GioHang", new { id = item.maSP_cart }))
+                        {
+                            <td>@item.soLuong_cart</td>
+                            <td>@String.Format("{0:0,0}", item.donGia_cart)</td>
+                            <td>@String.Format("{0:0,0}", item.thanhTien_cart)</td>
+                        }
+                    </tr>
+                }
+                <tr style="text-align:center;font-weight:bold">
+                    <td colspan="3">Số Lượng Sách: @ViewBag.TongSoLuong</td>
+                    <td colspan="3">Tổng Tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ</td>
+                </tr>
+                <tr style="text-align:center;font-weight:bold">
+                    <td colspan="6">
+                        @Html.ActionLink("Trở về giỏ hàng", "Index", "GioHang")
+                    </td>
+                </tr>
+            </table>
+            <h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
+            @{ 
+                khachHang kh = (khachHang)Session["TaiKhoan"];
+            }
+            <table align="center">
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <tr style="height:40px">
+                        <td>Họ tên khách hàng:</td>
+                        <td style="font-weight:bold">@kh.tenKH</td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td>Địa Chỉ:</td>
+                        <td style="font-weight:bold">
+                            @kh.diaChi , @data.quanHuyens.SingleOrDefault(a => a.maQH == kh.maQH).tenQH
+                        </td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td>Điện thoại:</td>
+                        <td style="font-weight:bold">@kh.soDT</td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td>Ngày đặt:</td>
+                        <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td>Ngày giao:</td>
+                        <td style="font-weight:bold">
+                            <input name="NgayGiao" type="date" />
+                        </td>
+                    </tr>
+                    <tr style="height:40px">
+                        <td></td>
+                        <td style="font-weight:bold">
+                            <input type="submit" value="ĐẶT HÀNG" />
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

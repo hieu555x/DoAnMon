@@ -186,18 +186,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__donHang__taiKhoa__3A81B327">
-    <End Role="taiKhoanTV" Type="Self.taiKhoanTV" Multiplicity="1" />
-    <End Role="donHang" Type="Self.donHang" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="taiKhoanTV">
-        <PropertyRef Name="taiKhoan" />
-      </Principal>
-      <Dependent Role="donHang">
-        <PropertyRef Name="taiKhoan" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__khachHang__maQH__4F7CD00D">
     <End Role="quanHuyen" Type="Self.quanHuyen" Multiplicity="0..1" />
     <End Role="khachHang" Type="Self.khachHang" Multiplicity="*" />
@@ -395,10 +383,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__donHang__maKH__398D8EEE" Association="Self.FK__donHang__maKH__398D8EEE">
       <End Role="khachHang" EntitySet="khachHang" />
-      <End Role="donHang" EntitySet="donHang" />
-    </AssociationSet>
-    <AssociationSet Name="FK__donHang__taiKhoa__3A81B327" Association="Self.FK__donHang__taiKhoa__3A81B327">
-      <End Role="taiKhoanTV" EntitySet="taiKhoanTV" />
       <End Role="donHang" EntitySet="donHang" />
     </AssociationSet>
     <AssociationSet Name="FK__khachHang__maQH__4F7CD00D" Association="Self.FK__khachHang__maQH__4F7CD00D">

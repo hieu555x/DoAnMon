@@ -18,7 +18,6 @@ namespace DoAnMon.Models
         public taiKhoanTV()
         {
             this.baiViets = new HashSet<baiViet>();
-            this.donHangs = new HashSet<donHang>();
             this.sanPhams = new HashSet<sanPham>();
         }
     
@@ -38,8 +37,6 @@ namespace DoAnMon.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<baiViet> baiViets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<donHang> donHangs { get; set; }
         public virtual nhomTk nhomTk { get; set; }
         public virtual quanHuyen quanHuyen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

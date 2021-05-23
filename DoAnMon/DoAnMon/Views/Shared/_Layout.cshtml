@@ -1,4 +1,4 @@
-﻿
+﻿@using DoAnMon.Models
 <!DOCTYPE html>
 <!--
     ustora by freshdesignweb.com
@@ -50,7 +50,15 @@
 
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Cart - <span class="cart-amunt">$100</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        @if (Session["GioHang"] != null)
+                        {
+                            List<GioHang> giohang = Session["GioHang"] as List<GioHang>;
+                            <a href=@Url.Action("Index","GioHang")>Cart - <span class="cart-amunt">@String.Format("{0:0,0}", giohang.Sum(a=>a.thanhTien_cart)) VNĐ</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">@giohang.Sum(a=>a.soLuong_cart)</span></a>
+                        }
+                        else
+                        {
+                            <a href=@Url.Action("Index","GioHang")>Cart<span class="cart-amunt"></span> <i class="fa fa-shopping-cart"></i> <span class="product-count"></span></a>
+                        }
                     </div>
                 </div>
             </div>
@@ -72,10 +80,18 @@
                     <ul class="nav navbar-nav">
                         <li><a href=@Url.Action("Index","Home")>Trang Chủ</a></li>
                         <li><a href=@Url.Action("Index","Shop")>Danh Sách Sản Phẩm</a></li>
-                        <li><a href=@Url.Action("Index","Cart")>Giỏ Hàng</a></li>
+                        <li><a href=@Url.Action("Index","GioHang")>Giỏ Hàng</a></li>
                         <li><a href=@Url.Action("Index","Contact")>Liên Hệ</a></li>
-                        <li><a href=@Url.Action("DangNhap","User")>Đăng Nhập</a></li>
-                        <li><a href=@Url.Action("DangKy", "User")>Đăng Ký</a></li>
+                        @if ((khachHang)Session["TaiKhoan"] == null)
+                        {
+                            <li><a href=@Url.Action("DangNhap","User")>Đăng Nhập</a></li>
+                            <li><a href=@Url.Action("DangKy", "User")>Đăng Ký</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="#">Chào Mừng Trở Lại , @(((khachHang)Session["TaiKhoan"]).tenKH)</a></li>
+                            <li><a href=@Url.Action("DangXuat", "User")>Đăng Xuất</a></li>
+                        }
                     </ul>
                 </div>
             </div>

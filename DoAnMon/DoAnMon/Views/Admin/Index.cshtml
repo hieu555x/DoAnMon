@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using DoAnMon.Models
+@{ 
+    var data = new dbBanHangOnlineEntities();
+}
+
+<h1 class="mt-4">
+    Trang Chủ
+</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">
+        <a href=@Url.Action("Index","Admin")>
+            Trang Chủ
+        </a>
+    </li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Danh Sách Các Đơn Đặt Hàng
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Mã Đơn Hàng</th>
+                        <th>Tên Khách Hàng</th>
+                        <th>Điện Thoại</th>
+                        <th>Địa Chỉ</th>
+                        <th>Ngày Đặt</th>
+                        <th>Ngày Giao</th>
+                        <th>Đơn Giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in data.donHangs)
+                    {
+                        <tr>
+                            <td>@item.soDH</td>
+                            <td>
+                                @data.khachHangs.SingleOrDefault(a => a.maKH == item.maKH).tenKH
+                            </td>
+                            <td>
+                                @data.khachHangs.SingleOrDefault(a => a.maKH == item.maKH).soDT
+                            </td>
+                            <td>
+                                @item.diaChiGH
+                            </td>
+                            <td>@item.ngayDat</td>
+                            <td>@item.ngayGH</td>
+                            <td>
+                                @String.Format("{0:0,0}", data.ctDonHangs.Where(a => a.soDH == @item.soDH).Sum(a => a.giaBan))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
